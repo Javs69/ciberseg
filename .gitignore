@@ -1,0 +1,9 @@
+# Credenciales y configuración local
+.env
+.env.*
+config.local.php
+
+# Archivos del sistema y del editor
+.DS_Store
+Thumbs.db
+.vscode/
