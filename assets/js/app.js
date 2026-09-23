@@ -13,3 +13,9 @@ document.querySelectorAll('.ver-password').forEach((boton) => {
     boton.setAttribute('aria-label', visible ? 'Mostrar contraseña' : 'Ocultar contraseña');
   });
 });
+
+document.querySelectorAll('[data-solo-letras]').forEach((input) => {
+  input.addEventListener('input', () => {
+    input.value = input.value.replace(/[^\p{L}\p{M}\s.'-]/gu, '');
+  });
+});

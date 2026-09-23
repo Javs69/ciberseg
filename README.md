@@ -6,7 +6,7 @@ Proyecto sin frameworks: HTML/CSS/JavaScript para el front-end y PHP nativo con 
 
 1. En pgAdmin crea una base de datos llamada `codeguard_db`.
 2. Selecciona esa base, abre **Query Tool**, copia y ejecuta el contenido de `database.sql`.
-3. Abre `config.php` y reemplaza `TU_CONTRASENA_DE_POSTGRES` por la contraseña de tu usuario `postgres`. Ajusta usuario, puerto o nombre si son distintos.
+3. Copia `.env.example` como `.env` y configura las credenciales de tu usuario PostgreSQL. No subas `.env` al repositorio.
 4. Asegúrate de que PHP tenga habilitada la extensión `pdo_pgsql`.
 
 ## Ejecutar

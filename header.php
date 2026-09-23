@@ -10,11 +10,11 @@
 </head>
 <body>
 <header class="barra">
-    <a class="marca" href="index.html"><span>&lt;/&gt;</span> CodeGuard</a>
+    <a class="marca" href="index.php"><span>&lt;/&gt;</span> CodeGuard</a>
     <button class="menu-boton" aria-label="Abrir menú" aria-expanded="false">☰</button>
     <nav class="navegacion">
-        <a href="index.html#servicios">Servicios</a>
-        <a href="index.html#seguridad">Seguridad</a>
+        <a href="index.php#servicios">Servicios</a>
+        <a href="index.php#seguridad">Seguridad</a>
         <?php if (usuario_autenticado()): ?>
             <a href="panel.php">Mi panel</a>
             <a class="enlace-salir" href="logout.php">Salir</a>

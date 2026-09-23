@@ -1,10 +1,39 @@
 <?php
-/* Configuración de PostgreSQL. Ajusta estos valores a tu instalación local. */
-define('DB_HOST', 'localhost');
-define('DB_PORT', '5432');
-define('DB_NAME', 'codeguard_db');
-define('DB_USER', 'postgres');
-define('DB_PASS', 'TU_CONTRASENA_DE_POSTGRES');
+function cargar_env(string $ruta): void
+{
+    if (!is_file($ruta)) {
+        return;
+    }
+
+    $variables = parse_ini_file($ruta, false, INI_SCANNER_RAW);
+    if ($variables === false) {
+        throw new RuntimeException('El archivo .env no tiene un formato válido.');
+    }
+
+    foreach ($variables as $nombre => $valor) {
+        if (getenv($nombre) === false) {
+            putenv($nombre . '=' . $valor);
+            $_ENV[$nombre] = $valor;
+        }
+    }
+}
+
+function env_requerida(string $nombre): string
+{
+    $valor = getenv($nombre);
+    if ($valor === false || $valor === '') {
+        throw new RuntimeException("Falta la variable de entorno {$nombre}.");
+    }
+    return $valor;
+}
+
+cargar_env(__DIR__ . '/.env');
+
+define('DB_HOST', env_requerida('DB_HOST'));
+define('DB_PORT', env_requerida('DB_PORT'));
+define('DB_NAME', env_requerida('DB_NAME'));
+define('DB_USER', env_requerida('DB_USER'));
+define('DB_PASS', env_requerida('DB_PASS'));
 
 function db(): PDO
 {
